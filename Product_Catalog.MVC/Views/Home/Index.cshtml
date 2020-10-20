@@ -1,8 +1,67 @@
-﻿@{
+﻿@model Product_Catalog.MVC.Models.CreateProductViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="box-2">
+    <div class="card col-xl-5 col-lg-5 col-md-6 col-sm-7">
+        <div class="card-body cardbody">
+            <section>
+                <form asp-controller="Home" asp-action="CreateProduct" method="post" novalidate>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group input-group groupprepend">
+                        <div class="input-group">
+                            <input asp-for="StyleName" class="formcontrol form-control" placeholder="Style Name" autofocus>
+                        </div>
+                        <div style="width:100%">
+                            <span asp-validation-for="StyleName" class="text-danger d-flex justify-content-center"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4 input-group groupprepend">
+                        <div class="input-group">
+                            <input asp-for="Description" class="formcontrol form-control" placeholder="Description" autocomplete="off">
+                        </div>
+                        <div style="width:100%">
+                            <span asp-validation-for="Description" class="text-danger d-flex justify-content-center"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4 input-group groupprepend">
+                        <div class=" input-group">
+                            <select asp-for="ColorID"
+                                    class="form-control"
+                                    asp-items="@(new SelectList(Model.ListOfColors,"Value", "Text"))">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4 input-group groupprepend">
+                        <div class="input-group">
+                            <select asp-for="SizeID"
+                                    class="form-control"
+                                    asp-items="@(new SelectList(Model.ListOfSizes,"Value", "Text"))">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <input asp-for="Sustainable" type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label">Sustainable</label>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <button class="buttonstyle btn btn-primary" name="button" value="login">Create product</button>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="buttonstyle btn btn-primary" name="button" value="login">Export db as JSON</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
 </div>

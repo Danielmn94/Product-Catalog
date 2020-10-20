@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Product_Catalog.Data\Product_Catalog.Data.csproj" />
+    <ProjectReference Include="..\Product_Catalog.DTO\Product_Catalog.DTO.csproj" />
   </ItemGroup>
 
 </Project>
