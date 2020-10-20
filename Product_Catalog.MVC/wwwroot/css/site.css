@@ -21,3 +21,8 @@ body {
 .cardbody {
     text-align: center;
 }
+
+.validation-summary-errors li {
+    list-style: none;
+    margin-left: -40px
+}

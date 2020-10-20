@@ -1,4 +1,5 @@
-﻿using Product_Catalog.Data.Domain.Models;
+﻿using AutoMapper;
+using Product_Catalog.Data.Domain.Models;
 using Product_Catalog.Data.Repositories;
 using Product_Catalog.Data.Repositories.Interfaces;
 using Product_Catalog.DTO.DTO;
@@ -13,11 +14,13 @@ namespace Product_Catalog.Service.Services
 {
     public class ProductService : IProductService
     {
-        private IProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
 
         public string GetDataAsJson()
@@ -27,30 +30,39 @@ namespace Product_Catalog.Service.Services
 
         public void Create(ProductDTO productDTO)
         {
+            var sizeName = "";
+
             //Get Text from ColorID and SizeID
             var colorName = (Color)Enum.Parse(typeof(Color), productDTO.ColorID);
 
-            var sizeName = GroupTypesStr[(int)Size.S];
+            switch (productDTO.SizeID)
+            {
+                case "S":
+                    sizeName = GroupTypesStr[(int)Size.S];
+                    break;
+                case "M":
+                    sizeName = GroupTypesStr[(int)Size.M];
+                    break;
+                case "L":
+                    sizeName = GroupTypesStr[(int)Size.L];
+                    break;
+                case "XL":
+                    sizeName = GroupTypesStr[(int)Size.XL];
+                    break;
+                default:
+                    break;
+            }
+
             //Create ItemNo
             var itemNo = productDTO.StyleName + productDTO.ColorID + productDTO.SizeID;
 
-            //Save to Database
+            //Save to database
+            var convertedDTO = _mapper.Map<Product>(productDTO);
+            convertedDTO.ColorName = colorName.ToString();
+            convertedDTO.SizeName = sizeName;
+            convertedDTO.ItemNo = itemNo;
 
-            Product product = new Product
-            {
-                ColorName = colorName.ToString(),
-                ColorID = Int32.Parse(productDTO.ColorID),
-                SizeName = sizeName.ToString(),
-                SizeID = productDTO.SizeID,
-                Description = productDTO.Description,
-                ItemNo = itemNo,
-                StyleName = productDTO.StyleName,
-                Sustainable = productDTO.Sustainable
-            };
-
-            _productRepository.CreateProduct(product);
-
-
+            _productRepository.CreateProduct(convertedDTO);
         }
 
         private enum Color
