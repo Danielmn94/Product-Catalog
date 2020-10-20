@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Product_Catalog.Data;
 
 namespace Product_Catalog.Data.Migrations
 {
     [DbContext(typeof(Product_CatalogContext))]
-    partial class Product_CatalogContextModelSnapshot : ModelSnapshot
+    [Migration("20201020121559_AddedIDForSizeAndColorToDataModel")]
+    partial class AddedIDForSizeAndColorToDataModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -6,28 +6,33 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using Product_Catalog.DTO.DTO;
 using Product_Catalog.MVC.Models;
+using Product_Catalog.Service.Services;
+using Product_Catalog.Service.Services.Interfaces;
 
 namespace Product_Catalog.MVC.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductService _productService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProductService productService)
         {
             _logger = logger;
+            _productService = productService;
         }
 
         public IActionResult Index()
         {
             CreateProductViewModel vm = new CreateProductViewModel();
 
-            vm.ListOfColors = new List<SelectListItem> 
-            { 
-                new SelectListItem() { Text = "Red", Value = "1" },
-                new SelectListItem() { Text = "Green", Value = "2"},
-                new SelectListItem() { Text = "Blue", Value = "3"}
+            vm.ListOfColors = new List<SelectListItem>
+            {
+                new SelectListItem() { Text = "Red", Value = "01" },
+                new SelectListItem() { Text = "Green", Value = "02"},
+                new SelectListItem() { Text = "Blue", Value = "03"}
             };
             vm.ListOfColors.Insert(0, new SelectListItem() { Text = "Select color", Value = string.Empty });
 
@@ -45,6 +50,17 @@ namespace Product_Catalog.MVC.Controllers
 
         public IActionResult CreateProduct(CreateProductViewModel vm)
         {
+            ProductDTO dto = new ProductDTO 
+            { 
+                Description = vm.Description, 
+                ColorID = vm.ColorID, 
+                SizeID = vm.SizeID, 
+                StyleName = vm.StyleName, 
+                Sustainable = vm.Sustainable 
+            };
+
+            _productService.Create(dto);
+
             return View();
         }
 

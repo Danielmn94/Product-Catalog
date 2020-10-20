@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Product_Catalog.Data;
 using Microsoft.EntityFrameworkCore;
+using Product_Catalog.Data.Repositories.Interfaces;
+using Product_Catalog.Data.Repositories;
+using Product_Catalog.Service.Services.Interfaces;
+using Product_Catalog.Service.Services;
 
 namespace Product_Catalog.MVC
 {
@@ -29,6 +33,9 @@ namespace Product_Catalog.MVC
 
             services.AddDbContext<Product_CatalogContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Product_CatalogDatabase")));
+
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
