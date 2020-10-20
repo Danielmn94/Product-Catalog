@@ -8,5 +8,6 @@ namespace Product_Catalog.Data.Repositories.Interfaces
     public interface IProductRepository
     {
         void CreateProduct(Product product);
+        string GetDataAsJson();
     }
 }
