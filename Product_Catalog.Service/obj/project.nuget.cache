@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sLjvWcGV/zVSEoaRV73dzNZhiTlGFaVyZ9TquVoLxRc+1tAUF6N7vkTxrJ4J92u3vQK8xfNnJJzc8mHjpmkRcQ==",
+  "dgSpecHash": "BzByUA7y5HH2pZ95PPQU2foBJgCd0wJPg1U+jtq5d8AocbfgUQlBa3Cd2JvPiX6u4TR3/AGQnltB7zlK6j3OvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product_Catalog\\Product_Catalog.Service\\Product_Catalog.Service.csproj",
+  "projectFilePath": "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product-Catalog\\Product_Catalog.Service\\Product_Catalog.Service.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
