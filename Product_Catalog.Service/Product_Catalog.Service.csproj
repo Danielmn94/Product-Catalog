@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Product_Catalog.Data\Product_Catalog.Data.csproj" />
+  </ItemGroup>
+
 </Project>
