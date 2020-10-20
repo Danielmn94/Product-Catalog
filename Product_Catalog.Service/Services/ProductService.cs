@@ -20,6 +20,11 @@ namespace Product_Catalog.Service.Services
             _productRepository = productRepository;
         }
 
+        public string GetDataAsJson()
+        {
+            return _productRepository.GetDataAsJson();
+        }
+
         public void Create(ProductDTO productDTO)
         {
             //Get Text from ColorID and SizeID

@@ -8,5 +8,6 @@ namespace Product_Catalog.Service.Services.Interfaces
     public interface IProductService
     {
         void Create(ProductDTO productDTO);
+        string GetDataAsJson();
     }
 }

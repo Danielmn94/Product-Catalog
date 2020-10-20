@@ -64,6 +64,18 @@ namespace Product_Catalog.MVC.Controllers
             return View();
         }
 
+        public ActionResult GetDataAsJson()
+        {
+            var json = _productService.GetDataAsJson();
+
+            var data = json;
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(data);
+            var output = new FileContentResult(bytes, "application/octet-stream");
+            output.FileDownloadName = DateTime.Now.ToShortDateString() + ".json";
+
+            return output;
+        }
+
         public IActionResult Privacy()
         {
             return View();
