@@ -14,6 +14,7 @@ using Product_Catalog.Data.Repositories.Interfaces;
 using Product_Catalog.Data.Repositories;
 using Product_Catalog.Service.Services.Interfaces;
 using Product_Catalog.Service.Services;
+using AutoMapper;
 
 namespace Product_Catalog.MVC
 {
@@ -29,10 +30,28 @@ namespace Product_Catalog.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddControllersWithViews();
 
             services.AddDbContext<Product_CatalogContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Product_CatalogDatabase")));
+
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductService, ProductService>();
@@ -58,11 +77,13 @@ namespace Product_Catalog.MVC
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Product}/{action=CreateProduct}/{id?}");
             });
         }
     }
