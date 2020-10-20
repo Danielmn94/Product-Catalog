@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Product_Catalog.Service/1.0.0": {
+        "runtime": {
+          "Product_Catalog.Service.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Product_Catalog.Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

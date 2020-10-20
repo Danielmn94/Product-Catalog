@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product_Catalog\\Product_Catalog.Data\\Product_Catalog.Data.csproj": {}
+    "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product-Catalog\\Product_Catalog.Data\\Product_Catalog.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product_Catalog\\Product_Catalog.Data\\Product_Catalog.Data.csproj": {
+    "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product-Catalog\\Product_Catalog.Data\\Product_Catalog.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product_Catalog\\Product_Catalog.Data\\Product_Catalog.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product-Catalog\\Product_Catalog.Data\\Product_Catalog.Data.csproj",
         "projectName": "Product_Catalog.Data",
-        "projectPath": "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product_Catalog\\Product_Catalog.Data\\Product_Catalog.Data.csproj",
+        "projectPath": "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product-Catalog\\Product_Catalog.Data\\Product_Catalog.Data.csproj",
         "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product_Catalog\\Product_Catalog.Data\\obj\\",
+        "outputPath": "C:\\Users\\Daniel\\Desktop\\Task - Product Catalog\\Product-Catalog\\Product_Catalog.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,6 +37,18 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.9, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

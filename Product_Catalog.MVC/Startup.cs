@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Product_Catalog.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Product_Catalog.MVC
 {
@@ -24,6 +26,9 @@ namespace Product_Catalog.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<Product_CatalogContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("Product_CatalogDatabase")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
